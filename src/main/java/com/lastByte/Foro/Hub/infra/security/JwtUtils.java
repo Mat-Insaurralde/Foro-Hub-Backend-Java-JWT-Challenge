@@ -23,10 +23,10 @@ import java.util.stream.Collectors;
 public class JwtUtils {
 
     //Firma de token
-    @Value("${JWT_SECRET}")
+    @Value("${security.jwt.key.private}")
     private String privateKey;
 
-    @Value("${JWT_USER_GENERATOR}")
+    @Value("${security.jwt.user.generator}")
     private String userGenerator;
 
 
