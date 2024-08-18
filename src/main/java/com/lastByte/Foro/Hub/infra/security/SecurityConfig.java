@@ -23,8 +23,13 @@ import static org.springframework.security.web.util.matcher.AntPathRequestMatche
 public class SecurityConfig {
 
 
-    @Autowired
+
     private JwtTokenValidatorFilter tokenValidatorFilter;
+
+    @Autowired
+    public SecurityConfig(JwtTokenValidatorFilter tokenValidatorFilter) {
+        this.tokenValidatorFilter = tokenValidatorFilter;
+    }
 
 
     @Bean
