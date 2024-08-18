@@ -24,7 +24,7 @@ public class SecurityConfig {
 
 
 
-    private JwtTokenValidatorFilter tokenValidatorFilter;
+    private final JwtTokenValidatorFilter tokenValidatorFilter;
 
     @Autowired
     public SecurityConfig(JwtTokenValidatorFilter tokenValidatorFilter) {
@@ -40,22 +40,22 @@ public class SecurityConfig {
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
 
-                        .requestMatchers(HttpMethod.POST,"/auth/**").permitAll() //Permite  ingresar a los POST /auth
+                        .requestMatchers(HttpMethod.POST,"/api/auth/**").permitAll() //Permite  ingresar a los POST /auth
                         .requestMatchers("/swagger-ui.html","/v3/api-docs/**","/swagger-ui/**").permitAll()
 
-                        .requestMatchers("/role/**").hasRole("ADMIN")
-                        .requestMatchers("/permiso/**").hasRole("ADMIN")
+                        .requestMatchers("/api/role/**").hasRole("ADMIN")
+                        .requestMatchers("/api/permiso/**").hasRole("ADMIN")
 
 
-                        .requestMatchers(HttpMethod.GET, "/cursos/**").permitAll()
-                        .requestMatchers("/cursos/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/cursos/**").permitAll()
+                        .requestMatchers("/api/cursos/**").hasRole("ADMIN")
 
 
-                        .requestMatchers(HttpMethod.GET,"/topicos/**").permitAll()
-                        .requestMatchers("/topicos/**").authenticated()
+                        .requestMatchers(HttpMethod.GET,"/api/topicos/**").permitAll()
+                        .requestMatchers("/api/topicos/**").authenticated()
 
-                        .requestMatchers(HttpMethod.GET,"/respuesta/**").permitAll()
-                        .requestMatchers("/respuesta/**").authenticated()
+                        .requestMatchers(HttpMethod.GET,"/api/respuesta/**").permitAll()
+                        .requestMatchers("/api/respuesta/**").authenticated()
 
                         .anyRequest().denyAll()
 
@@ -66,6 +66,17 @@ public class SecurityConfig {
                         UsernamePasswordAuthenticationFilter.class )//Valida que el usuario tenga una sesion iniciada
                 .build();
     }
+
+
+
+
+
+
+
+
+
+
+
 
 
    //Autentication Manager
