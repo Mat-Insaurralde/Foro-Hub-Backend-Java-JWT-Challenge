@@ -13,7 +13,6 @@ com\lastByte\Foro\Hub\presentation\controller\RoleController.class
 com\lastByte\Foro\Hub\presentation\dto\auth\AuthResponse.class
 com\lastByte\Foro\Hub\presentation\controller\AutenticacionController.class
 com\lastByte\Foro\Hub\infra\security\JwtUtils.class
-com\lastByte\Foro\Hub\infra\config\StartupLogger.class
 com\lastByte\Foro\Hub\domain\Respuesta\RespuestaService.class
 com\lastByte\Foro\Hub\domain\Role\RoleEnum.class
 com\lastByte\Foro\Hub\domain\Topico\TopicoService.class
