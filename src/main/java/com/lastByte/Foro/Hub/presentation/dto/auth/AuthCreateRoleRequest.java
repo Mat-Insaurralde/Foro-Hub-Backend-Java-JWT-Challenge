@@ -1,6 +1,5 @@
 package com.lastByte.Foro.Hub.presentation.dto.auth;
 
-import com.lastByte.Foro.Hub.domain.Role.Role;
 import jakarta.validation.constraints.Size;
 
 import java.util.List;

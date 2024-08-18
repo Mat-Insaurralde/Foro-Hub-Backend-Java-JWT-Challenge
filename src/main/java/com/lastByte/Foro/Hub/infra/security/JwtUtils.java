@@ -7,6 +7,7 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -79,7 +80,7 @@ public class JwtUtils {
 
 
     //Extraer el username
-    public String extractUsername(DecodedJWT decodedJWT) {
+    public String extractUsername(@NotNull DecodedJWT decodedJWT) {
         return decodedJWT.getSubject();
     }
 

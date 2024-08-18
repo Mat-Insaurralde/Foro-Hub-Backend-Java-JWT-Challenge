@@ -8,7 +8,6 @@ import com.lastByte.Foro.Hub.presentation.dto.respuesta.RequestCreateRespuestaDT
 import com.lastByte.Foro.Hub.presentation.dto.respuesta.RequestUpdateRespuestaDTO;
 import com.lastByte.Foro.Hub.presentation.dto.respuesta.ResponseCreateRespuestaDTO;
 import com.lastByte.Foro.Hub.presentation.dto.respuesta.RespuestaDTO;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

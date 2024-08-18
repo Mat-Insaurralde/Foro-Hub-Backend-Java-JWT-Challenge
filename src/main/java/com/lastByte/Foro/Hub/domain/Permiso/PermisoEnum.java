@@ -1,7 +1,5 @@
 package com.lastByte.Foro.Hub.domain.Permiso;
 
-import com.lastByte.Foro.Hub.domain.Role.RoleEnum;
-
 public enum PermisoEnum {
 
     READ,
