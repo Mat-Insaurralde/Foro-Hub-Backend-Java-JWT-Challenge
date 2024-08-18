@@ -30,6 +30,8 @@ public class JwtUtils {
     private String userGenerator;
 
 
+
+
     //CREAMOS EL TOKEN
     public String createToken(Authentication authentication) {
         Algorithm algorithm = Algorithm.HMAC256(this.privateKey);
