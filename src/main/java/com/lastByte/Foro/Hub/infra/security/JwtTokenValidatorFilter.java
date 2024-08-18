@@ -29,13 +29,14 @@ public class JwtTokenValidatorFilter extends OncePerRequestFilter {
 
     private final JwtUtils jwtUtils;
 
-    private final ObjectMapper objectMapper;
+
+    private ObjectMapper objectMapper;
 
 
     @Autowired
-    public JwtTokenValidatorFilter(ObjectMapper objectMapper , JwtUtils jwtUtils) {
+    public JwtTokenValidatorFilter(JwtUtils jwtUtils) {
       this.jwtUtils = jwtUtils;
-        this.objectMapper = objectMapper;
+
     }
 
 
