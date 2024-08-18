@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 
 
-@SpringBootApplication(scanBasePackages = "com.lastByte.Foro.Hub")
+@SpringBootApplication()
 @EnableSpringDataWebSupport(pageSerializationMode = EnableSpringDataWebSupport.PageSerializationMode.VIA_DTO)
 public class ForoHubApplication {
 

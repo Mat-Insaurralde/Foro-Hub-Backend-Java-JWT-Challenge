@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
+
 
 import java.util.Date;
 import java.util.Map;
@@ -23,10 +23,10 @@ import java.util.stream.Collectors;
 public class JwtUtils {
 
     //Firma de token
-    @Value("${security.jwt.key.private}")
+    @Value("${JWT_SECRET}")
     private String privateKey;
 
-    @Value("${security.jwt.user.generator}")
+    @Value("${JWT_USER_GENERATOR}")
     private String userGenerator;
 
 
