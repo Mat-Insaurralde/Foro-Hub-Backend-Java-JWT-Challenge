@@ -1,0 +1,3 @@
+com\lastByte\Foro\Hub\ForoHubApplicationTests.class
+com\lastByte\Foro\Hub\infra\security\UserDetailsServiceImplTest.class
+com\lastByte\Foro\Hub\domain\Topico\validaciones\CursosCorrespondientesTest.class
