@@ -50,7 +50,7 @@ public class JwtTokenValidatorFilter extends OncePerRequestFilter {
         try {
 
 
-            if (jwtToken != null) {
+            if (jwtToken != null && !jwtToken.trim().isEmpty()) {
                 jwtToken = jwtToken.replace("Bearer ", ""); //Quitamos el bearer
 
                 DecodedJWT decodedJWT = jwtUtils.validateToken(jwtToken);
