@@ -102,7 +102,7 @@ public class AutenticacionController {
 
 
 
-    
+
     public void setCookieToken(String token, HttpServletResponse response) {
         // Crear la cookie
         Cookie cookie = new Cookie("acces_token", token);
