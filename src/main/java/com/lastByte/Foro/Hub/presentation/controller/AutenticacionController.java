@@ -36,14 +36,13 @@ public class AutenticacionController {
     private JwtUtils jwtUtils;
 
 
-
     @PostMapping("/login")
     @Transactional
     @Operation(
             summary = "Obtiene el acceso , la autenticacion y el token para el usuario ingresado que da acceso a los demas endpoints",
             description = """
-                          Este endpoint permite a un usuario autenticarse en el sistema y obtener un token JWT.
-                          El token se debe incluir en los encabezados de las solicitudes subsecuentes para acceder a los endpoints protegidos.""",
+                    Este endpoint permite a un usuario autenticarse en el sistema y obtener un token JWT.
+                    El token se debe incluir en los encabezados de las solicitudes subsecuentes para acceder a los endpoints protegidos.""",
             tags = {}
     )
     public ResponseEntity<AuthResponse> login(@RequestBody @Valid AuthLoginRequest datosLogin, HttpServletResponse response) {
@@ -51,12 +50,10 @@ public class AutenticacionController {
         AuthResponse authResponse = this.userDetailsServiceImpl.login(datosLogin);
 
         setCookieToken(this.userDetailsServiceImpl.createToken(datosLogin.username(), datosLogin.password())
-                , response );
+                , response);
 
-        return  ResponseEntity.status(HttpStatus.OK).body(authResponse);
+        return ResponseEntity.status(HttpStatus.OK).body(authResponse);
     }
-
-
 
 
     @PostMapping("/register")
@@ -69,44 +66,43 @@ public class AutenticacionController {
                     """,
             tags = {}
     )
-    public ResponseEntity register(@RequestBody @Valid AuthRegisterUserRequest datosRegister , HttpServletResponse response ) {
+    public ResponseEntity register(@RequestBody @Valid AuthRegisterUserRequest datosRegister, HttpServletResponse response) {
 
         AuthResponse authResponse = this.userDetailsServiceImpl.registerUser(datosRegister);
 
-         setCookieToken(this.userDetailsServiceImpl.createToken(datosRegister.username(), datosRegister.password())
-         , response );
+        setCookieToken(this.userDetailsServiceImpl.createToken(datosRegister.username(), datosRegister.password())
+                , response);
 
-        return  ResponseEntity.status(HttpStatus.CREATED).body(authResponse);
+        return ResponseEntity.status(HttpStatus.CREATED).body(authResponse);
     }
 
 
-
     @PostMapping("/logout")
-    public ResponseEntity<AuthResponse> logout(HttpServletResponse response){
+    public ResponseEntity<AuthResponse> logout(HttpServletResponse response) {
 
-        setCookieToken(null,response);
+
+        // Crear una cookie con el mismo nombre que la del token
+        Cookie cookie = new Cookie("acces_token", null); // El valor de la cookie es null
+        cookie.setHttpOnly(true);
+        cookie.setSecure(true);
+        cookie.setMaxAge(0); // Establecer la duración a 0 para eliminar la cookie
+        cookie.setPath("/"); // La misma ruta que la cookie original
+
+        // Eliminar la cookie agregándola a la respuesta
+        response.addCookie(cookie);
+
 
         // Limpiar el contexto de seguridad
         SecurityContextHolder.clearContext();
 
-        return  ResponseEntity.status(HttpStatus.OK).body(new AuthResponse("","Sesion Cerrada!",false));
+        return ResponseEntity.status(HttpStatus.OK).body(new AuthResponse("", "Sesion Cerrada!", false));
     }
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+    
     public void setCookieToken(String token, HttpServletResponse response) {
         // Crear la cookie
         Cookie cookie = new Cookie("acces_token", token);
@@ -119,5 +115,6 @@ public class AutenticacionController {
         // Añadir la cookie a la respuesta
         response.addCookie(cookie);
     }
+
 
 }
